@@ -97,21 +97,18 @@ void doubleList<T>::addOrdinata(T x){
     else{
 
         if(precc == NULL){
-            nuovo->succ = testa->succ;
-            testa->succ->prec = nuovo;
+            nuovo->succ = testa;
+            testa->prec = nuovo;
             testa = nuovo;
+            return ;
         }
-        doubleNode<T>* success = precc->succ;
-
-        nuovo->prec = precc;
-        nuovo->succ = success;
 
         precc->succ = nuovo;
-    
-    
-        if(success!=NULL){
-            success->prec = nuovo;
-            return;
-        }
+        nuovo->prec = precc;
+
+        if(iter!=NULL)
+            iter->prec = nuovo;
+
+        nuovo->succ = iter;
     }
 }

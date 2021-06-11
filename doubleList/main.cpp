@@ -9,16 +9,14 @@ int main(){
     list.addOrdinata(5);
     list.addOrdinata(2);
     list.addOrdinata(6);
+    list.addOrdinata(4);
     list.addOrdinata(0);
     list.addOrdinata(-1);
-     list.addOrdinata(-100);
-      list.addOrdinata(5245);
-
+    list.addOrdinata(-100);
+    list.addOrdinata(5245);
 
     list.show();
-    list.cancella(5);
-    list.cancella(-100);
-    list.cancella(5245);
-    list.show();
+    list.showCrescente();
+    list.showDecrescente();
     return 0;
 }

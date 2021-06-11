@@ -4,6 +4,18 @@
 template< class T>
 doubleList<T>::doubleList(){}
 
+template< class T>
+doubleList<T>::~doubleList(){
+    doubleNode<T>* iter = testa;
+    doubleNode<T>* successivo;
+    
+    while(iter!= NULL){
+        successivo = iter->succ;
+        delete iter;
+        iter = successivo;
+    }
+}
+
 template <class T>
 void doubleList<T>::add(T x){
     doubleNode<T>* nuovo = new doubleNode<T>(x);
@@ -43,7 +55,7 @@ doubleNode<T>* doubleList<T>::search(T x){
     
     doubleNode<T>* nuovo = testa;
     
-    for(nuovo; nuovo!=NULL; nuovo = nuovo->succ)
+    for(; nuovo!=NULL; nuovo = nuovo->succ)
         if(nuovo->data == x) return nuovo;
     return nullptr;
 }
@@ -110,5 +122,37 @@ void doubleList<T>::addOrdinata(T x){
             iter->prec = nuovo;
 
         nuovo->succ = iter;
+    }
+}
+
+template <class T>
+void doubleList<T>::showCrescente(){
+    std::cout << "DOUBLELIST\t[ ";
+    doubleNode<T>* iter = testa;
+
+    while(iter!=nullptr){
+        if(iter->succ!=NULL)
+            std::cout << iter->data << ", ";
+        else std::cout << iter->data << " ]\n";
+
+        iter = iter->succ;
+    }
+}
+
+template <class T>
+void doubleList<T>::showDecrescente(){
+    std::cout << "DOUBLELIST\t[ ";
+    doubleNode<T>* iter = testa;
+
+    while(iter->succ!=nullptr){
+        iter = iter->succ;
+    }
+
+    while(iter!=NULL){
+        if(iter->prec!=NULL)
+            std::cout << iter->data << ", ";
+        else std::cout << iter->data << " ]\n";
+
+        iter = iter->prec;
     }
 }

@@ -10,12 +10,15 @@ class doubleList{
 
     public:
     doubleList();
+    ~doubleList();
     void add(T x);
     void addOrdinata(T x);
     doubleNode<T>* search(T x);
     void cancella(T x);
     void show();
     doubleNode<T>* getTesta() const {return this->testa;}  
+    void showCrescente(); // O(n) ->usando addOrdinata
+    void showDecrescente(); // O(n) ->usando addOrdinata
 
     friend std::ostream& operator<<(std::ostream& o, const doubleList<T>& l){
         doubleNode<T>* iter = l.getTesta();
